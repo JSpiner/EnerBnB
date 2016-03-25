@@ -60,6 +60,25 @@
                 android:src="@drawable/ic_search_white_48dp"
                 app:backgroundTint="#2f2f2f" />
 
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/bg_loading"
+                android:layout_width="match_parent"
+                android:background="#dd000000"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_height="match_parent">
+
+                <com.wang.avi.AVLoadingIndicatorView
+                    android:id="@+id/avloadingIndicatorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    app:indicator="LineScalePulseOut"
+                    app:indicator_color="@color/colorPrimary"
+                    />
+
+            </LinearLayout>
         </FrameLayout>
 
         <LinearLayout

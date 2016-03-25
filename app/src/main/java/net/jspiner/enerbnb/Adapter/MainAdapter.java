@@ -2,6 +2,7 @@ package net.jspiner.enerbnb.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.util.SparseArray;
@@ -13,6 +14,8 @@ import android.widget.LinearLayout;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 
+import net.jspiner.enerbnb.Activity.MapActivity;
+import net.jspiner.enerbnb.Activity.PayActivity;
 import net.jspiner.enerbnb.Model.SellerModel;
 import net.jspiner.enerbnb.R;
 
@@ -71,6 +74,9 @@ public class MainAdapter extends BaseAdapter {
                 case 2:
                     convertView = inflater.inflate(R.layout.item_seller_near, null);
                     break;
+                case 3:
+                    convertView = inflater.inflate(R.layout.item_seller_map, null);
+                    break;
 
             }
 
@@ -116,8 +122,17 @@ public class MainAdapter extends BaseAdapter {
         @Nullable
         @OnClick(R.id.linear_seller_qr)
         void onQrClick(){
-            new IntentIntegrator((Activity)context).initiateScan();
 
+            Intent intent = new Intent(context, PayActivity.class);
+            context.startActivity(intent);
+
+        }
+
+        @Nullable
+        @OnClick(R.id.imv_seller_map)
+        void onMapClick(){
+            Intent intent = new Intent(context, MapActivity.class);
+            context.startActivity(intent);
         }
 
     }

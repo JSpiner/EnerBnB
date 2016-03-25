@@ -1,6 +1,9 @@
 package net.jspiner.enerbnb.Activity;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nirhart.parallaxscroll.views.ParallaxListView;
@@ -24,6 +28,7 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
@@ -45,10 +50,31 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     @Bind(R.id.lv_main_list)
     ParallaxListView lvList;
+    @Bind(R.id.bg_loading)
+    LinearLayout linearLoading;
 
     MainAdapter adapter;
 
     boolean loadingMore;
+
+    Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+
+            initUpdateFrame();
+            initParallaxScroll();
+
+            handler2.sendEmptyMessageDelayed(0,1500);
+        }
+    };
+
+    Handler handler2 = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            linearLoading.setVisibility(View.GONE);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +87,11 @@ public class MainActivity extends AppCompatActivity {
     void init(){
         ButterKnife.bind(this);
 
+        linearLoading.setVisibility(View.VISIBLE);
         initToolbar();
 
-        initUpdateFrame();
-        initParallaxScroll();
+
+        handler.sendEmptyMessageDelayed(0, 2000);
     }
 
     void initUpdateFrame(){
@@ -110,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
 
         View header = LayoutInflater.from(this).inflate(R.layout.item_main_header,null);
         ArrayList<SellerModel> arrayList = new ArrayList<>();
-        for(int i=0;i<3;i++){
+        for(int i=0;i<4;i++){
             arrayList.add(new SellerModel());
         }
         adapter = new MainAdapter(MainActivity.this,arrayList );
@@ -173,6 +200,12 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         mDrawerToggle.syncState();
 
+    }
+
+    @OnClick(R.id.fab_room_chat)
+    void onSearchClick(){
+        Intent intent = new Intent(MainActivity.this, MapActivity.class);
+        startActivity(intent);
     }
 
     public class ViewBinder{
