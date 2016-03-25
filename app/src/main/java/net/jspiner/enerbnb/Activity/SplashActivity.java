@@ -94,7 +94,7 @@ public class SplashActivity extends Activity {
                     public void onSuccess(LoginResult loginResult) {
                         // App code
                         Log.d(TAG, "login success");
-                        Toast.makeText(getBaseContext(), "로그인을 성공하셨습니다.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getBaseContext(), "로그인을 성공하셨습니다.", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
@@ -104,7 +104,7 @@ public class SplashActivity extends Activity {
                     public void onCancel() {
                         // App code
                         Log.d(TAG, "login cancel");
-                        Toast.makeText(getBaseContext(), "로그인을 취소하셨습니다.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getBaseContext(), "로그인을 취소하셨습니다.", Toast.LENGTH_SHORT).show();
 
                     }
 
@@ -112,7 +112,7 @@ public class SplashActivity extends Activity {
                     public void onError(FacebookException exception) {
                         // App code
                         Log.d(TAG, "login error");
-                        Toast.makeText(getBaseContext(), "에러가 발생했습니다.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getBaseContext(), "에러가 발생했습니다.", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -122,7 +122,7 @@ public class SplashActivity extends Activity {
                     public void onSuccess(LoginResult loginResult) {
                         // App code
                         Log.d(TAG, "login success");
-                        Toast.makeText(getBaseContext(), "로그인을 성공하셨습니다.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getBaseContext(), "로그인을 성공하셨습니다.", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
@@ -132,7 +132,7 @@ public class SplashActivity extends Activity {
                     public void onCancel() {
                         // App code
                         Log.d(TAG, "login cancel");
-                        Toast.makeText(getBaseContext(), "로그인을 취소하셨습니다.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getBaseContext(), "로그인을 취소하셨습니다.", Toast.LENGTH_SHORT).show();
 
                     }
 
@@ -140,7 +140,7 @@ public class SplashActivity extends Activity {
                     public void onError(FacebookException error) {
                         // App code
                         Log.d(TAG, "login error");
-                        Toast.makeText(getBaseContext(), "에러가 발생했습니다.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getBaseContext(), "에러가 발생했습니다.", Toast.LENGTH_SHORT).show();
 
                     }
                 });

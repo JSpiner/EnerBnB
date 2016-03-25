@@ -3,4 +3,36 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include layout="@layout/toolbar"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <net.jspiner.enerbnb.View.AnimatedExpandableListView
+            android:layout_width="match_parent"
+            android:id="@+id/lv_menu"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+
+        </net.jspiner.enerbnb.View.AnimatedExpandableListView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:textColor="#2f2f2f"
+                android:textSize="22dp"
+                android:backgroundTint="#efefef"
+                android:text="결제하기"
+                android:id="@+id/btn_checkmenu_submit" />
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>
