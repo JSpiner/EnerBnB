@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#efefef">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <in.srain.cube.views.ptr.PtrClassicFrameLayout xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/rotate_header_list_view_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    cube_ptr:ptr_duration_to_close="200"
+                    cube_ptr:ptr_duration_to_close_header="1000"
+                    cube_ptr:ptr_keep_header_when_refresh="true"
+                    cube_ptr:ptr_pull_to_fresh="true"
+                    cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
+                    cube_ptr:ptr_resistance="1.7">
+
+                    <com.nirhart.parallaxscroll.views.ParallaxListView
+                        android:id="@+id/lv_main_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:divider="@null"
+                        android:dividerHeight="0dp"
+                        app:parallax_factor="1.9"
+                        tools:context=".RoomActivity" />
+                </in.srain.cube.views.ptr.PtrClassicFrameLayout>
+            </LinearLayout>
+
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_room_chat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_search_white_48dp"
+                app:backgroundTint="#2f2f2f" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/drawer_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:orientation="vertical">
+
+            <include layout="@layout/container_menu" />
+
+        </LinearLayout>
+    </android.support.v4.widget.DrawerLayout>
+</LinearLayout>
