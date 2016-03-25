@@ -21,6 +21,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -59,7 +60,11 @@ public class SplashActivity extends Activity {
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-
+            if(AccessToken.getCurrentAccessToken() == null){
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
 //            moveAnime();
            /* Intent intent = new Intent(SplashActivity.this, MainActivity.class);
             startActivity(intent);
