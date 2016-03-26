@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="#ffffff"
                     android:textSize="18sp"
-                    android:text="85,234원"/>
+                    android:text="5,234원"/>
 
             </LinearLayout>
 

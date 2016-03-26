@@ -7,6 +7,7 @@
         android:icon="@drawable/ic_settings_input_hdmi_white_48dp"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:name=".BnbApplication"
         android:theme="@style/AppTheme" >
 
         <uses-permission android:name="com.tistory.webnautes.googlemap.locationapi.maps.permission.MAPS_RECEIVE" />

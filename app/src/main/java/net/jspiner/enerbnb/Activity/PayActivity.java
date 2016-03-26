@@ -25,6 +25,7 @@ import net.jspiner.enerbnb.BillingUtil.Purchase;
 import net.jspiner.enerbnb.Model.Menu;
 import net.jspiner.enerbnb.Model.SubMenu;
 import net.jspiner.enerbnb.R;
+import net.jspiner.enerbnb.Util;
 import net.jspiner.enerbnb.View.AnimatedExpandableListView;
 
 import org.json.JSONObject;
@@ -34,6 +35,9 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 /**
  * Copyright 2016 JSpiner. All rights reserved.
@@ -225,8 +229,21 @@ public class PayActivity extends AppCompatActivity {
     };
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1001 && resultCode == RESULT_OK) {
-            if (!mHelper.handleActivityResult(requestCode, resultCode, data))
+        if (requestCode == 1001 ) {
+            Toast.makeText(getBaseContext(),"결제가 완료되었습니다33",Toast.LENGTH_LONG).show();
+            Log.d("PurchaseActivity", "onActivityResult handled by IABUtil.");
+            Util.getHttpSerivce().push(code, new Callback<String>() {
+                @Override
+                public void success(String s, Response response) {
+                    Log.d("dd","success");
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+                    Log.d("DD","ERROR :"+error.getMessage());
+                }
+            });
+            /*if (!mHelper.handleActivityResult(requestCode, resultCode, data))
             {
                 super.onActivityResult(requestCode, resultCode, data);
 
@@ -238,9 +255,9 @@ public class PayActivity extends AppCompatActivity {
             }
             else
             {
-                Toast.makeText(getBaseContext(),"결제가 완료되었습니다33",Toast.LENGTH_LONG).show();
-                Log.d("PurchaseActivity", "onActivityResult handled by IABUtil.");
-            }
+//                Toast.makeText(getBaseContext(),"결제가 완료되었습니다33",Toast.LENGTH_LONG).show();
+//                Log.d("PurchaseActivity", "onActivityResult handled by IABUtil.");
+            }*/
         }
         else{
             IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
@@ -251,6 +268,7 @@ public class PayActivity extends AppCompatActivity {
                 } else {
                     Log.d("MainActivity", "Scanned");
                     Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                    code = result.getContents();
                 }
             } else {
                 // This is important, otherwise the result will not be passed to the fragment
@@ -260,5 +278,7 @@ public class PayActivity extends AppCompatActivity {
 
 
     }
+
+    String code;
 
 }
