@@ -39,6 +39,11 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <activity android:name=".Activity.TestActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:screenOrientation="portrait">
+        </activity>
+
         <activity android:name=".Activity.PayActivity"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:screenOrientation="portrait">
