@@ -12,6 +12,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import net.jspiner.enerbnb.R;
 
+import java.util.Random;
+
 /**
  * Copyright 2016 JSpiner. All rights reserved.
  *
@@ -78,10 +80,12 @@ public class MapActivity extends Activity {
         map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
                 .getMap();
 
+        Random random = new Random();
         for(LatLng lng : lats){
-
-            Marker seoul = map.addMarker(new MarkerOptions().position(lng)
-                    .title("Seoul"));
+            if(random.nextInt(5)<2) {
+                Marker seoul = map.addMarker(new MarkerOptions().position(lng)
+                        .title("Seoul"));
+            }
         }
 
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(SEOUL, 15));

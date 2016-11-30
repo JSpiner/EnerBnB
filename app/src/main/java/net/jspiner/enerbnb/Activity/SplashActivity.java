@@ -151,6 +151,7 @@ public class SplashActivity extends Activity {
                 });
 
     }
+
     public void showHashKey(Context context) {
         try {
             PackageInfo info = context.getPackageManager().getPackageInfo(
@@ -164,6 +165,7 @@ public class SplashActivity extends Activity {
         } catch (NoSuchAlgorithmException e) {
         }
     }
+
     void moveAnime(){
         TranslateAnimation ani = new TranslateAnimation(
                 Animation.RELATIVE_TO_SELF, 0.0f,
